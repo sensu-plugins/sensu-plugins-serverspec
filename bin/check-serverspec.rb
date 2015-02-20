@@ -34,12 +34,14 @@
 #   for details.
 #
 
-require 'rubygems' if RUBY_VERSION < '1.9.0'
 require 'json'
 require 'socket'
 require 'serverspec'
 require 'sensu-plugin/check/cli'
 
+#
+#
+#
 class CheckServerspec < Sensu::Plugin::Check::CLI
   option :tests_dir,
          short: '-d /tmp/dir',
@@ -95,7 +97,6 @@ class CheckServerspec < Sensu::Plugin::Check::CLI
           output
         )
       end
-
     end
 
     puts parsed['summary_line']
