@@ -1,7 +1,11 @@
 require 'json'
 
 # encoding: utf-8
+<<<<<<< HEAD
 module SensuPluginsServerspec
+=======
+module SensuPluginsServerSpec
+>>>>>>> update repo
   # This defines the version of the gem
   module Version
     MAJOR = 0
