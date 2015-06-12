@@ -43,6 +43,12 @@ require 'sensu-plugin/check/cli'
 #
 #
 class CheckServerspec < Sensu::Plugin::Check::CLI
+  # NOTE: this causes the `-d` and `-t` flags to be ignored, by design
+  option :custom_run_command,
+         short: '-c "git clone https://github.com/somerepo/serverspecs; cd serverspecs ; bundle ; rake test"',
+         long: '--custom-run-command "git clone https://github.com/somerepo/serverspecs; cd serverspecs ; bundle ; rake test"',
+         default: nil
+
   option :tests_dir,
          short: '-d /tmp/dir',
          long: '--tests-dir /tmp/dir',
@@ -79,7 +85,11 @@ class CheckServerspec < Sensu::Plugin::Check::CLI
   end
 
   def run
-    serverspec_results = `cd #{config[:tests_dir]} ; ruby -S rspec #{config[:spec_tests]} --format json`
+    serverspec_results = if config[:custom_run_command]
+                           `#{config[:custom_run_command]}`
+                         else
+                           `cd #{config[:tests_dir]} ; ruby -S rspec #{config[:spec_tests]} --format json`
+                         end
     parsed = JSON.parse(serverspec_results)
 
     parsed['examples'].each do |serverspec_test|
