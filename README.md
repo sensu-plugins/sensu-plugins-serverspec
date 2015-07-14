@@ -1,6 +1,6 @@
 ## Sensu-Plugins-serverspec
 
-[![Build Status](https://travis-ci.org/sensu-plugins/sensu-plugins-serverspec.svg?branch=master)](https://travis-ci.org/sensu-plugins/sensu-plugins-serverspec)
+[ ![Build Status](https://travis-ci.org/sensu-plugins/sensu-plugins-serverspec.svg?branch=master)](https://travis-ci.org/sensu-plugins/sensu-plugins-serverspec)
 [![Gem Version](https://badge.fury.io/rb/sensu-plugins-serverspec.svg)](http://badge.fury.io/rb/sensu-plugins-serverspec)
 [![Code Climate](https://codeclimate.com/github/sensu-plugins/sensu-plugins-serverspec/badges/gpa.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-serverspec)
 [![Test Coverage](https://codeclimate.com/github/sensu-plugins/sensu-plugins-serverspec/badges/coverage.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-serverspec)
