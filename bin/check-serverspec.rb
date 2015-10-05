@@ -14,8 +14,6 @@
 #
 # DEPENDENCIES:
 #   gem: sensu-plugin
-#   gem: json
-#   gem: socket
 #   gem: serverspec
 #
 # USAGE:
