@@ -62,7 +62,7 @@ class CheckServerspec < Sensu::Plugin::Check::CLI
   end
 
   # http://stackoverflow.com/questions/11784109/detecting-operating-systems-in-ruby
-  def get_os
+  def os
     @os ||= (
       host_os = RbConfig::CONFIG['host_os']
       case host_os
@@ -75,7 +75,7 @@ class CheckServerspec < Sensu::Plugin::Check::CLI
       when /solaris|bsd/
         :unix
       else
-        raise NotImplementedError, "unknown os: #{host_os.inspect}"
+        fail NotImplementedError, "unknown os: #{host_os.inspect}"
       end
     )
   end
@@ -96,14 +96,14 @@ class CheckServerspec < Sensu::Plugin::Check::CLI
   end
 
   def run
-    os = get_os()
+    operating_system = os
     # require fully qualified path as embedded ruby may not be on the system path
     ruby_exec = File.join(RbConfig::CONFIG['bindir'], RbConfig::CONFIG['ruby_install_name']).sub(/.*\s.*/m, '"\&"')
     # requires for '-S' option to search for scripts
     ENV['RUBYPATH'] = RbConfig::CONFIG['bindir']
-    if os == (:linux||:macosx||:unix)
+    if operating_system == (:linux || :macosx || :unix)
       serverspec_results = `cd #{config[:tests_dir]} ; #{ruby_exec} -S rspec #{config[:spec_tests]} --format json`
-    elsif os == :windows
+    elsif operating_system == :windows
       serverspec_results = `cd #{config[:tests_dir]} & #{ruby_exec} -S rspec #{config[:spec_tests]} --format json`
     end
     parsed = JSON.parse(serverspec_results)
