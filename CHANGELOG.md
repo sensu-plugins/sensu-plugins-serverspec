@@ -5,6 +5,14 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ## Unreleased
 
+## [0.1.0] - 2015-11-10
+### Added
+- Support for Windows
+
+### Changed
+- Use fully qualified path of invoking Ruby (to handle cases when Ruby is not on the system path)
+- Updated serverspec gem to 2.24.2
+
 ## [0.0.2] - 2015-07-14
 ### Changed
 - updated sensu-plugin gem to 1.2.0
@@ -16,4 +24,3 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ### Added
 - initial release
-

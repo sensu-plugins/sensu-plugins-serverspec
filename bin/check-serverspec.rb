@@ -61,6 +61,25 @@ class CheckServerspec < Sensu::Plugin::Check::CLI
     u.send(msg + "\n", 0, '127.0.0.1', 3030)
   end
 
+  # http://stackoverflow.com/questions/11784109/detecting-operating-systems-in-ruby
+  def get_os
+    @os ||= (
+      host_os = RbConfig::CONFIG['host_os']
+      case host_os
+      when /mswin|msys|mingw|cygwin|bccwin|wince|emc/
+        :windows
+      when /darwin|mac os/
+        :macosx
+      when /linux/
+        :linux
+      when /solaris|bsd/
+        :unix
+      else
+        raise NotImplementedError, "unknown os: #{host_os.inspect}"
+      end
+    )
+  end
+
   def send_ok(check_name, msg)
     d = { 'name' => check_name, 'status' => 0, 'output' => 'OK: ' + msg, 'handler' => config[:handler] }
     sensu_client_socket d.to_json
@@ -77,7 +96,16 @@ class CheckServerspec < Sensu::Plugin::Check::CLI
   end
 
   def run
-    serverspec_results = `cd #{config[:tests_dir]} ; ruby -S rspec #{config[:spec_tests]} --format json`
+    os = get_os()
+    # require fully qualified path as embedded ruby may not be on the system path
+    ruby_exec = File.join(RbConfig::CONFIG['bindir'], RbConfig::CONFIG['ruby_install_name']).sub(/.*\s.*/m, '"\&"')
+    # requires for '-S' option to search for scripts
+    ENV['RUBYPATH'] = RbConfig::CONFIG['bindir']
+    if os == (:linux||:macosx||:unix)
+      serverspec_results = `cd #{config[:tests_dir]} ; #{ruby_exec} -S rspec #{config[:spec_tests]} --format json`
+    elsif os == :windows
+      serverspec_results = `cd #{config[:tests_dir]} & #{ruby_exec} -S rspec #{config[:spec_tests]} --format json`
+    end
     parsed = JSON.parse(serverspec_results)
 
     parsed['examples'].each do |serverspec_test|
