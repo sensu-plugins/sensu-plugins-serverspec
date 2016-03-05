@@ -20,7 +20,10 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Removed
 - Remove JSON gem dep that is not longer needed with Ruby 1.9+
 
-## [0.0.1] - 2015-07-04
-
+## 0.0.1 - 2015-07-04
 ### Added
 - initial release
+
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-serverspec/compare/0.1.0...HEAD
+[0.1.0]: https://github.com/sensu-plugins/sensu-plugins-serverspec/compare/0.0.2...0.1.0
+[0.0.2]: https://github.com/sensu-plugins/sensu-plugins-serverspec/compare/0.0.1...0.0.2
