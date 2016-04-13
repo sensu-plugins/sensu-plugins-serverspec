@@ -24,7 +24,7 @@ deploy:
     secure: LBUBZ6R/qttAz08cjgAgFt1xeZ+FSl8wOeXH+qu3iV2vK1GrsD8LbfM3017R8L0/D9M0daoFycbGA6yojXKGtTd5Ixg3GIjiTGu02I4j/PYUgoUi39pXYBRnbwO5eyrUQ6Rlc+H+rYjQTr60qB0dvFxId4bBfTadce7sKCP5CN4=
   gem: sensu-plugins-serverspec
   on:
-    ags: true
+    tags: true
     all_branches: true
     rvm: 1.9.3
     rvm: 2.0
