@@ -4,6 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+## [1.0.0] - 2016-09-06
+
+### Changed
+- Dependency on sensu-plugin changed from strict (= 1.2.0) to pessimistic (~> 1.2)
+- Dependency on serverspec bumped from 2.24.2 to 2.24.3
+
 ### Removed
 - Support for Ruby 1.9.3
 
@@ -29,6 +35,7 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-serverspec/compare/0.1.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-serverspec/compare/1.0.0...HEAD
+[1.0.0]: https://github.com/sensu-plugins/sensu-plugins-serverspec/compare/0.1.0...1.0.0
 [0.1.0]: https://github.com/sensu-plugins/sensu-plugins-serverspec/compare/0.0.2...0.1.0
 [0.0.2]: https://github.com/sensu-plugins/sensu-plugins-serverspec/compare/0.0.1...0.0.2
