@@ -4,8 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
-## [1.0.0] - 2016-09-06
 
+## [1.0.0] - 2016-09-25
 ### Changed
 - Dependency on sensu-plugin changed from strict (= 1.2.0) to pessimistic (~> 1.2)
 - Dependency on serverspec bumped from 2.24.2 to 2.24.3
