@@ -119,6 +119,7 @@ class CheckServerspec < Sensu::Plugin::Check::CLI
                     serverspec_test['file_path'].split('/')[-1] + '_' + serverspec_test['line_number'].to_s + '_' + index.to_s
                   else
                     serverspec_test['file_path'].split('/')[-1] + '_' + serverspec_test['line_number'].to_s
+                  end
       output = serverspec_test['full_description'].delete!('"')
 
       if serverspec_test['status'] == 'passed'
