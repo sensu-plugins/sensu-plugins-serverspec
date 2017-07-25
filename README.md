@@ -13,6 +13,10 @@
 
 ## Usage
 
+Run test suite:
+
+`check-serverspec -d /tmp/my_tests -t spec/my_tests_spec.rb`
+
 ## Installation
 
 [Installation and Setup](http://sensu-plugins.io/docs/installation_instructions.html)
