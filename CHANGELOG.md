@@ -6,6 +6,7 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ## [Unreleased]
 ### Added
 - Ruby 2.4.1 testing
+- Config option to provide a proxy client name for serverspec results
 
 ### Fixed
 - PR template spelling

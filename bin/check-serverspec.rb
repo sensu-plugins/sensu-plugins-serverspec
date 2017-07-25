@@ -56,6 +56,11 @@ class CheckServerspec < Sensu::Plugin::Check::CLI
          long: '--handler HANDLER',
          default: 'default'
 
+  option :proxy_client,
+         description: 'Proxy client name for results',
+         long: '--proxy-client SOURCE',
+         required: false
+
   def sensu_client_socket(msg)
     u = UDPSocket.new
     u.send(msg + "\n", 0, '127.0.0.1', 3030)
@@ -81,17 +86,17 @@ class CheckServerspec < Sensu::Plugin::Check::CLI
   end
 
   def send_ok(check_name, msg)
-    d = { 'name' => check_name, 'status' => 0, 'output' => 'OK: ' + msg, 'handler' => config[:handler] }
+    d = { 'name' => check_name, 'status' => 0, 'output' => 'OK: ' + msg, 'handler' => config[:handler], 'source' => config[:proxy_client] }
     sensu_client_socket d.to_json
   end
 
   def send_warning(check_name, msg)
-    d = { 'name' => check_name, 'status' => 1, 'output' => 'WARNING: ' + msg, 'handler' => config[:handler] }
+    d = { 'name' => check_name, 'status' => 1, 'output' => 'WARNING: ' + msg, 'handler' => config[:handler], 'source' => config[:proxy_client] }
     sensu_client_socket d.to_json
   end
 
   def send_critical(check_name, msg)
-    d = { 'name' => check_name, 'status' => 2, 'output' => 'CRITICAL: ' + msg, 'handler' => config[:handler] }
+    d = { 'name' => check_name, 'status' => 2, 'output' => 'CRITICAL: ' + msg, 'handler' => config[:handler], 'source' => config[:proxy_client] }
     sensu_client_socket d.to_json
   end
 

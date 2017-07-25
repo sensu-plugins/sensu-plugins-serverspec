@@ -13,6 +13,10 @@
 
 ## Usage
 
+Run tests with a specified proxy client
+
+`check-serverspec.rb -d /tmp/my_tests -s spec/my_tests.rb --proxy-client serverspec-client`
+
 ## Installation
 
 [Installation and Setup](http://sensu-plugins.io/docs/installation_instructions.html)
