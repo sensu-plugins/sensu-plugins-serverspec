@@ -6,6 +6,7 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ## [Unreleased]
 ### Added
 - Ruby 2.4.1 testing
+- Config option to add index value to results to prevent duplicate tests overwriting each other
 
 ### Fixed
 - PR template spelling
