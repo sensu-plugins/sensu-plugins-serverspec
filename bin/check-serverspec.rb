@@ -56,11 +56,6 @@ class CheckServerspec < Sensu::Plugin::Check::CLI
          long: '--handler HANDLER',
          default: 'default'
 
-  option :index_results,
-         description: 'Append extra index value to rspec results',
-         long: '--index-results',
-         default: false
-
   def sensu_client_socket(msg)
     u = UDPSocket.new
     u.send(msg + "\n", 0, '127.0.0.1', 3030)
@@ -114,12 +109,7 @@ class CheckServerspec < Sensu::Plugin::Check::CLI
     parsed = JSON.parse(serverspec_results)
 
     parsed['examples'].each_with_index do |serverspec_test, index|
-      test_name = case config[:index_results]
-                  when true
-                    serverspec_test['file_path'].split('/')[-1] + '_' + serverspec_test['line_number'].to_s + '_' + index.to_s
-                  else
-                    serverspec_test['file_path'].split('/')[-1] + '_' + serverspec_test['line_number'].to_s
-                  end
+      test_name = serverspec_test['file_path'].split('/')[-1] + '_' + serverspec_test['line_number'].to_s + '_' + index.to_s
       output = serverspec_test['full_description'].delete!('"')
 
       if serverspec_test['status'] == 'passed'
