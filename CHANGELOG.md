@@ -6,7 +6,9 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ## [Unreleased]
 ### Added
 - Ruby 2.4.1 testing
-- Config option to add index value to results to prevent duplicate tests overwriting each other
+
+### Breaking Changes
+- Check result names will now be appended with a unique index value to ensure a unique namespace for all results
 
 ### Fixed
 - PR template spelling
